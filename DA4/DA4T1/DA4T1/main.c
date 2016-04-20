@@ -16,10 +16,12 @@
 #define DELAY_MS 5
 #define STEP 1			// must be 1 
 
-
-void fadeRed(unsigned char, unsigned char, char);		// fade output compare register to control red's pwm signal.
-void fadeGreen(unsigned char, unsigned char, char);		// fade output compare register to control green's pwm signal.
-void fadeBlue(unsigned char, unsigned char, char);		// fade output compare register to control blue's pwm signal.
+// fade output compare register to control red's pwm signal.
+void fadeRed(unsigned char, unsigned char, char);	
+// fade output compare register to control green's pwm signal.
+void fadeGreen(unsigned char, unsigned char, char);	
+// fade output compare register to control blue's pwm signal.
+void fadeBlue(unsigned char, unsigned char, char);	
 
 int main ()
 {
@@ -27,8 +29,10 @@ int main ()
 	DDRD = (1<<DDD5) | (1<<DDD6);
 	DDRB = (1<<DDB3);
 	// Set up timer0 for colors Red and Green
-	// Phase correct, clear on compare match when up counting, and set on compare match when down counting. 
-	TCCR0A = (1<<COM0A1) | (0<<COM0A0) | (1<<COM0B1) | (0<<COM0B0) | (1<<WGM00); // set phase correct mode. 
+	// Phase correct, clear on compare match when up counting, 
+	// and set on compare match when down counting. 
+	// set phase correct mode. 
+	TCCR0A = (1<<COM0A1) | (0<<COM0A0) | (1<<COM0B1) | (0<<COM0B0) | (1<<WGM00); 
 	TCCR0B = (1<<CS01) | (0<<CS00);			// prescaler of 64
 	// Set up timer2 for color Blue
 	// Same configuration as timer0
